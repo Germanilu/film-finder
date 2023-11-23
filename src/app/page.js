@@ -45,7 +45,7 @@ export default function Home() {
 
 
       //building url
-      url = `${url}${movieYearKey}=${chosenYearAge}&${voteAverageKey}=${filterData.inputReview}&${choosenCategoryKey}=${joinValueInCategory}`
+      url = `${url}${movieYearKey}=${chosenYearAge}&${voteAverageKey}=${filterData.inputReview}&${choosenCategoryKey}=${joinValueInCategory}&person/31`
       console.log(url)
       
       //options for get

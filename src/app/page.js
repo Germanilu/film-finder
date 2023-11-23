@@ -5,6 +5,8 @@ import { get,includes,pull,map, lowerCase } from 'lodash';
 import externalData from '@/app/data';
 export default function Home() {
 
+  const bearerToken = process.env.NEXT_PUBLIC_BEARER_TOKEN;
+
   const [filterData, setFilterData] = useState({
     inputDate:'',
     inputReview:'',
@@ -26,7 +28,7 @@ export default function Home() {
     }
 
     const getMovie = () =>  {
-      
+      console.log("AAA",bearerToken)
       const joinValueInCategory = category.join('&')
 
       //url base
@@ -51,7 +53,7 @@ export default function Home() {
         method: 'GET',
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhN2FmOWFkZjMwYzcyNmYwMTRlMzhmMGUxOGM4NzU4NSIsInN1YiI6IjYyNmQ2ZGM4MjQ1ZGJlMDA2NTQzN2JkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JaeivKd7GSDuwvuxMEObpoIa9CzatrNsdli9RBDHWPk'
+          Authorization: bearerToken
         }
       };
 

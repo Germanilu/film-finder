@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { get,includes,pull,map, lowerCase } from 'lodash';
 import externalData from '@/app/data';
+import Years from '@/app/components/filters/years/index';
 export default function Home() {
 
   const bearerToken = process.env.NEXT_PUBLIC_BEARER_TOKEN;
@@ -15,6 +16,9 @@ export default function Home() {
 
   const [category, setCategory] = useState([])
   
+  useEffect(() => {
+    console.log("aaaa",filterData)
+  })
 
   //Actualizo el objeto filterData con todos los filtros que se insertan
   const handleInputChange = (event) => {
@@ -28,7 +32,6 @@ export default function Home() {
     }
 
     const getMovie = () =>  {
-      console.log("AAA",bearerToken)
       const joinValueInCategory = category.join('&')
 
       //url base
@@ -46,7 +49,6 @@ export default function Home() {
 
       //building url
       url = `${url}${movieYearKey}=${chosenYearAge}&${voteAverageKey}=${filterData.inputReview}&${choosenCategoryKey}=${joinValueInCategory}&person/31`
-      console.log(url)
       
       //options for get
       const options = {
@@ -68,51 +70,49 @@ export default function Home() {
 
 
   const addCheckbox = (event) => {
-    console.log(event.target.defaultValue)
     
 
     if(includes(category,event.target.defaultValue)){
-      console.log("Existe, asi que lo quito")
       pull(category,event.target.defaultValue)
     }
     else if(!includes(category,event.target.defaultValue)){
-      console.log("NOOO Existe asi que lo añado")
+
       setCategory([...category,event.target.defaultValue])
     }
-
-    
   }
-  console.log(category)
-
+ 
   return (
-    <div>
+    <div className='home'>
+      <h1>App que aconseja peliculas</h1>
 
-      <form>
-        <label for="inputDate">Quieres ver una peli, pero de hace cuantos años?</label>
-        <input type='text' id='inputDate' name='inputDate'  onChange={handleInputChange}></input>
 
-        <label for="inputReview">Que media de valoraciones quieres?</label>
-        <input type='text' id='inputReview' name='inputReview'   onChange={handleInputChange}></input>
+        <Years handleInputChange={handleInputChange} filterData={filterData}/>
+      
+        {/* <label for="inputDate">Quieres ver una peli, pero de hace cuantos años?</label>
+        <input type='text' id='inputDate' name='inputDate'  onChange={handleInputChange}></input> */}
+
+        {/* <label for="inputReview">Que media de valoraciones quieres?</label>
+        <input type='text' id='inputReview' name='inputReview'   onChange={handleInputChange}></input> */}
 
 
       
-        <label>Choose your Category interests:</label>
+        {/* <label>Choose your Category interests:</label>
         
         {
-          map(get(externalData,'categories'), category => {
+          map(get(externalData,'categories.data'), category => {
        
             return(
               <li>
-                  <input type="checkbox" id={lowerCase(category.name)} name={lowerCase(category.name)} value={category.value} onClick={addCheckbox}/>
-                  <label for="action">{category.name}</label>
+                  <input type="checkbox" id={lowerCase(get(category,'name'))} name={lowerCase(get(category,'name'))} value={get(category,'data.id')} onClick={(addCheckbox)}/>
+                  <label for={lowerCase(get(category,'name'))}>{get(category,'name')}</label>
               </li>  
             )
           })
-        }
-        
-        <button type="button" onClick={() => getMovie()}>click</button>
-      </form>
+        } */}
 
+        
+        {/* <button type="button" onClick={() => getMovie()}>click</button> */}
+      
     </div>
 
   )

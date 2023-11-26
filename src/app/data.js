@@ -1,26 +1,32 @@
 const externalData = {
 
-    categories: [
-        { name: 'Adventure', value: 12 },
-        { name: 'Animation', value: 16 },
-        { name: 'Comedy', value: 35 },
-        { name: 'Crime', value: 80 },
-        { name: 'Documentary', value: 99 },
-        { name: 'Drama', value: 18 },
-        { name: 'Family', value: 10751 },
-        { name: 'Fantasy', value: 14 },
-        { name: 'History', value: 36 },
-        { name: 'Horror', value: 27 },
-        { name: 'Music', value: 10402 },
-        { name: 'Mystery', value: 9648 },
-        { name: 'Romance', value: 10749 },
-        { name: 'Science Fiction', value: 878 },
-        { name: 'TV Movie', value: 10770 },
-        { name: 'Thriller', value: 53 },
-        { name: 'War', value: 10752 }
-      ],
+    categories: {
+      id: 'categories',
+      data:[
+        { name: 'Adventure', id: 12 },
+        { name: 'Animation', id: 16 },
+        { name: 'Comedy', id: 35 },
+        { name: 'Crime', id: 80 },
+        { name: 'Documentary', id: 99 },
+        { name: 'Drama', id: 18 },
+        { name: 'Family', id: 10751 },
+        { name: 'Fantasy', id: 14 },
+        { name: 'History', id: 36 },
+        { name: 'Horror', id: 27 },
+        { name: 'Music', id: 10402 },
+        { name: 'Mystery', id: 9648 },
+        { name: 'Romance', id: 10749 },
+        { name: 'Science Fiction', id: 878 },
+        { name: 'TV Movie', id: 10770 },
+        { name: 'Thriller', id: 53 },
+        { name: 'War', id: 10752 }
+      ]
+    },
+      
 
-      actors: [
+    actors: {
+      id: 'actors',
+      data: [
         {name: 'Michael Caine', id: 3895},
         {name: 'Morgan Freeman', id: 192},
         {name: 'Leonardo Dicaprio', id: 6193},
@@ -54,6 +60,7 @@ const externalData = {
         {name: 'Brad Pitt', id: 287}, 
         {name: 'Tom Cruise', id: 500}, 
       ]
+    },
 }
 
 export default externalData

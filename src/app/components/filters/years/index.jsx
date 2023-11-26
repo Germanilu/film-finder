@@ -1,24 +1,43 @@
 
 
 import { useSelector, useDispatch } from 'react-redux';
-import updateData from '@/app/redux/action'
+import {updateYear} from '@/app/redux/action'
 
 const Years = ({handleInputChange,filterData}) => {
-    debugger
+
 
     const dispatch = useDispatch();
-    const data = useSelector((state) => state.data);
+    const FilterData = useSelector((state) => state.FilterData);
     
-    const handleUpdateData = () => {
-        // Dispatch the 'UPDATE_DATA' action with new data
-        dispatch(updateData('New Data from Component'));
+
+
+    /**
+     * Calculate correct year ( actualYear - year)
+     * And call handleUpdateData to dispatch redux action
+     * 
+     * @returns handleUpdateData(filteredYear)
+     */
+    const calculateYear = () => {
+        const {year}        = filterData;
+        const actualYear    = 2023;
+        return handleupdateYear(actualYear - parseInt(year));
+      }
+    
+    /**
+     * @method
+     * Dispatch updateData Action
+     * @param {Int} year 
+     */
+    const handleupdateYear = (year) => {
+        dispatch(updateYear(year));
       };
-    
+
     return (
         <div>
-            <label for="inputDate">Quieres ver una peli, pero de hace cuantos años?</label>
-            <input type='text' id='inputDate' name='inputDate'  onChange={handleInputChange}></input>
-            <button type="button" onClick={handleUpdateData}>click</button>
+            <label for="year">Quieres ver una peli, pero de hace cuantos años?</label>
+            <input type='text' id='year' name='year'  onChange={handleInputChange}></input>
+            <button type="button" onClick={calculateYear}>click</button>
+        {FilterData.year}
         </div>
     )
 }

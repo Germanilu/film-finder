@@ -1,23 +1,29 @@
 "use client"
 
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { get,includes,pull,map, lowerCase } from 'lodash';
 import externalData from '@/app/data';
 import Years from '@/app/components/filters/years/index';
+import ReviewRating from '@/app/components/filters/review-rating/index';
 export default function Home() {
 
   const bearerToken = process.env.NEXT_PUBLIC_BEARER_TOKEN;
 
   const [filterData, setFilterData] = useState({
-    inputDate:'',
-    inputReview:'',
+    year:'',
+    reviewRating:'',
     category:[]
   });
 
   const [category, setCategory] = useState([])
   
+  /**
+   * Getting State
+   */
+  const FilterDataState = useSelector((state) => state.FilterData);
+
   useEffect(() => {
-    console.log("aaaa",filterData)
   })
 
   //Actualizo el objeto filterData con todos los filtros que se insertan
@@ -25,11 +31,6 @@ export default function Home() {
     setFilterData({...filterData, [event.target.name]: event.target.value})
   };
 
-
-    const getYear = (number) => {
-      const actualYear = 2023;
-      return actualYear - parseInt(number);
-    }
 
     const getMovie = () =>  {
       const joinValueInCategory = category.join('&')
@@ -80,13 +81,22 @@ export default function Home() {
       setCategory([...category,event.target.defaultValue])
     }
   }
- 
+ console.log("AQUI",FilterDataState)
   return (
     <div className='home'>
       <h1>App que aconseja peliculas</h1>
 
+      {
+        get(FilterDataState,'step') == 0 &&
+          <Years handleInputChange={handleInputChange} filterData={filterData}/>
+      }
 
-        <Years handleInputChange={handleInputChange} filterData={filterData}/>
+
+      {
+        get(FilterDataState,'step') == 1 &&
+          <ReviewRating handleInputChange={handleInputChange} filterData={filterData}/>
+      }
+
       
         {/* <label for="inputDate">Quieres ver una peli, pero de hace cuantos años?</label>
         <input type='text' id='inputDate' name='inputDate'  onChange={handleInputChange}></input> */}

@@ -9,3 +9,9 @@ export const updateReviewRating = (reviewRating) => ({
   reviewRating,
 });
 
+
+export const updateCategory = (category) => ({
+  type: 'UPDATE_FILTER_DATA_CATEGORY',
+  category,
+});
+

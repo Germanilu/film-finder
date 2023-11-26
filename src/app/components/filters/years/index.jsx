@@ -37,7 +37,7 @@ const Years = ({handleInputChange,filterData}) => {
             <label for="year">Quieres ver una peli, pero de hace cuantos años?</label>
             <input type='text' id='year' name='year'  onChange={handleInputChange}></input>
             <button type="button" onClick={calculateYear}>click</button>
-        {FilterData.year}
+
         </div>
     )
 }

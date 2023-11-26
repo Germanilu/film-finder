@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { get,includes,pull,map, lowerCase } from 'lodash';
-import externalData from '@/app/data';
+
 import Years from '@/app/components/filters/years/index';
 import ReviewRating from '@/app/components/filters/review-rating/index';
+import Category from '@/app/components/filters/category/index';
 export default function Home() {
 
   const bearerToken = process.env.NEXT_PUBLIC_BEARER_TOKEN;
@@ -16,7 +17,7 @@ export default function Home() {
     category:[]
   });
 
-  const [category, setCategory] = useState([])
+  // const [category, setCategory] = useState([])
   
   /**
    * Getting State
@@ -70,18 +71,8 @@ export default function Home() {
 
 
 
-  const addCheckbox = (event) => {
-    
-
-    if(includes(category,event.target.defaultValue)){
-      pull(category,event.target.defaultValue)
-    }
-    else if(!includes(category,event.target.defaultValue)){
-
-      setCategory([...category,event.target.defaultValue])
-    }
-  }
- console.log("AQUI",FilterDataState)
+ console.log("REDUX: FILTERDATA ",FilterDataState)
+//  console.log("STATE: FILTERDATA ",filterData)
   return (
     <div className='home'>
       <h1>App que aconseja peliculas</h1>
@@ -97,28 +88,15 @@ export default function Home() {
           <ReviewRating handleInputChange={handleInputChange} filterData={filterData}/>
       }
 
-      
-        {/* <label for="inputDate">Quieres ver una peli, pero de hace cuantos años?</label>
-        <input type='text' id='inputDate' name='inputDate'  onChange={handleInputChange}></input> */}
-
-        {/* <label for="inputReview">Que media de valoraciones quieres?</label>
-        <input type='text' id='inputReview' name='inputReview'   onChange={handleInputChange}></input> */}
-
+{
+        get(FilterDataState,'step') == 2 &&
+          <Category handleInputChange={handleInputChange} filterData={filterData} setFilterData={setFilterData}/>
+      }
 
       
-        {/* <label>Choose your Category interests:</label>
-        
-        {
-          map(get(externalData,'categories.data'), category => {
-       
-            return(
-              <li>
-                  <input type="checkbox" id={lowerCase(get(category,'name'))} name={lowerCase(get(category,'name'))} value={get(category,'data.id')} onClick={(addCheckbox)}/>
-                  <label for={lowerCase(get(category,'name'))}>{get(category,'name')}</label>
-              </li>  
-            )
-          })
-        } */}
+
+      
+      
 
         
         {/* <button type="button" onClick={() => getMovie()}>click</button> */}

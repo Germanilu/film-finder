@@ -27,6 +27,16 @@ const initialState = {
               reviewRating: action.reviewRating,
             }
           };
+
+        case 'UPDATE_FILTER_DATA_CATEGORY':
+          return {
+            ...state,
+            FilterData:{
+              ...state.FilterData,
+              step: state.FilterData.step +1,
+              category: action.category,
+            }
+          };
       default:
         return state;
     }

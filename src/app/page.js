@@ -12,8 +12,6 @@ import Search from '@/app/components/search/index';
 
 export default function Home() {
 
-  const bearerToken = process.env.NEXT_PUBLIC_BEARER_TOKEN;
-
   const [filterData, setFilterData] = useState({
     year:'',
     reviewRating:'',

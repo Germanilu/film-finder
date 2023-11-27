@@ -18,4 +18,3 @@ export const updateActors = (actors) => ({
   type: 'UPDATE_FILTER_DATA_ACTORS',
   actors,
 });
-

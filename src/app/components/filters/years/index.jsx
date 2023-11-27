@@ -1,15 +1,12 @@
 
 
-import { useSelector, useDispatch } from 'react-redux';
-import {updateYear} from '@/app/redux/action'
+import { useSelector, useDispatch }     from 'react-redux';
+import {updateYear}                     from '@/app/redux/action'
 
 const Years = ({handleInputChange,filterData}) => {
 
-
     const dispatch = useDispatch();
     const FilterData = useSelector((state) => state.FilterData);
-    
-
 
     /**
      * Calculate correct year ( actualYear - year)
@@ -37,7 +34,6 @@ const Years = ({handleInputChange,filterData}) => {
             <label for="year">Quieres ver una peli, pero de hace cuantos años?</label>
             <input type='text' id='year' name='year'  onChange={handleInputChange}></input>
             <button type="button" onClick={calculateYear}>click</button>
-
         </div>
     )
 }

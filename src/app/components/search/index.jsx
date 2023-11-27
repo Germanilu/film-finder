@@ -1,9 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { get,includes,pull,map, lowerCase } from 'lodash';
-const Search = () => {
-    const state = useSelector((state) => state);
-    console.log("state",state)
+import { useSelector, useDispatch }             from 'react-redux';
+import { get,includes,pull,map, lowerCase }     from 'lodash';
 
+const Search = () => {
+
+    const state = useSelector((state) => state);
     const bearerToken = process.env.NEXT_PUBLIC_BEARER_TOKEN;
 
     /**
@@ -38,8 +38,8 @@ const Search = () => {
     
     
     const getMovie = () =>  {
+
         const processedData = prepareData();
-        debugger
         //url base
         let url = `https://api.themoviedb.org/3/discover/movie?`;
   
@@ -51,7 +51,8 @@ const Search = () => {
   
   
         //building url
-        url = `${url}${movieYearKey}=${get(processedData,'primaryReleaseDate')}&${voteAverageKey}=${get(processedData,'voteAverage')}&${choosenCategoryKey}=${get(processedData,'categories')}&${actorsKey}=${get(processedData,'actors')}`
+        url = `${url}${movieYearKey}=${get(processedData,'primaryReleaseDate')}&${voteAverageKey}=${get(processedData,'voteAverage')}&${choosenCategoryKey}=${get(processedData,'categories')}&${actorsKey}=${get(processedData,'actors')}`;
+
         console.log(url)
         //options for get
         const options = {
@@ -72,7 +73,6 @@ const Search = () => {
     
     return(
         <div>
-            hola
             <button type="button" onClick={getMovie} >click</button>
         </div>
     )

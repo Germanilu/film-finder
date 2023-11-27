@@ -1,15 +1,13 @@
 
 
-import { useSelector, useDispatch } from 'react-redux';
-import {updateReviewRating} from '@/app/redux/action'
+import { useSelector, useDispatch }     from 'react-redux';
+import {updateReviewRating}             from '@/app/redux/action'
 
 const ReviewRating = ({handleInputChange,filterData}) => {
 
-
     const dispatch = useDispatch();
     const FilterData = useSelector((state) => state.FilterData);
-    
-    
+
     /**
      * @method
      * Dispatch updateData Action
@@ -18,7 +16,7 @@ const ReviewRating = ({handleInputChange,filterData}) => {
     const handleUpdateReviewRating = () => {
         const {reviewRating}        = filterData;
         dispatch(updateReviewRating(reviewRating));
-      };
+        };
 
     return (
         <div>

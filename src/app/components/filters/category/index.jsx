@@ -4,13 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import {updateCategory} from '@/app/redux/action'
 import externalData from '@/app/data';
 import { get,includes,pull,map, lowerCase } from 'lodash';
-const Category = ({filterData,setFilterData}) => {
 
+const Category = ({filterData,setFilterData}) => {
 
     const dispatch = useDispatch();
 
-    
-    
+  
      /**
      * @method
      * Dispatch updateData Action

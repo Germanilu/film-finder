@@ -7,6 +7,7 @@ import { get,includes,pull,map, lowerCase } from 'lodash';
 import Years from '@/app/components/filters/years/index';
 import ReviewRating from '@/app/components/filters/review-rating/index';
 import Category from '@/app/components/filters/category/index';
+import Actors from '@/app/components/filters/actors/index';
 export default function Home() {
 
   const bearerToken = process.env.NEXT_PUBLIC_BEARER_TOKEN;
@@ -14,7 +15,8 @@ export default function Home() {
   const [filterData, setFilterData] = useState({
     year:'',
     reviewRating:'',
-    category:[]
+    category:[],
+    actors:[]
   });
 
   // const [category, setCategory] = useState([])
@@ -82,16 +84,21 @@ export default function Home() {
           <Years handleInputChange={handleInputChange} filterData={filterData}/>
       }
 
-
       {
         get(FilterDataState,'step') == 1 &&
           <ReviewRating handleInputChange={handleInputChange} filterData={filterData}/>
       }
 
-{
+      {
         get(FilterDataState,'step') == 2 &&
-          <Category handleInputChange={handleInputChange} filterData={filterData} setFilterData={setFilterData}/>
+          <Category  filterData={filterData} setFilterData={setFilterData}/>
       }
+
+      {
+        get(FilterDataState,'step') == 3 &&
+          <Actors  filterData={filterData} setFilterData={setFilterData}/>
+      }
+
 
       
 

@@ -14,4 +14,8 @@ export const updateCategory = (category) => ({
   type: 'UPDATE_FILTER_DATA_CATEGORY',
   category,
 });
+export const updateActors = (actors) => ({
+  type: 'UPDATE_FILTER_DATA_ACTORS',
+  actors,
+});
 

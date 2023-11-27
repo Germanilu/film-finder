@@ -37,6 +37,16 @@ const initialState = {
               category: action.category,
             }
           };
+
+        case 'UPDATE_FILTER_DATA_ACTORS':
+          return {
+            ...state,
+            FilterData:{
+              ...state.FilterData,
+              step: state.FilterData.step +1,
+              actors: action.actors,
+            }
+          };
       default:
         return state;
     }

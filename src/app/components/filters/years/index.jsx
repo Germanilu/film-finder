@@ -4,6 +4,7 @@ import {updateYear}                     from '@/app/redux/action'
 import externalData                         from '@/app/data';
 import { get,map} from 'lodash';
 import { FaCheck } from "react-icons/fa6";
+import { IoIosArrowRoundForward } from "react-icons/io";
 import './index.scss';
 const Years = () => {
 
@@ -44,7 +45,7 @@ const Years = () => {
         <div className='years-design'>
           <div className='step-one'>
             <div className='description'>
-              <div>1. -</div>
+              <div className='step'>1.<IoIosArrowRoundForward /></div>
               <div>
                 <h2 className='title'>Step 1: Set the Stage</h2>
                 <p className='subtitle'>Select the Release Date of Your Cinematic Journey</p>

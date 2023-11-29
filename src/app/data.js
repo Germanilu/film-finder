@@ -1,5 +1,15 @@
 const externalData = {
 
+    years:{
+      data:[
+        {id: 1, value:1, option:'A', text:'1 year'},
+        {id: 2, value:2, option:'B', text:'+2 years'},
+        {id: 3, value:5, option:'C', text:'+5 years'},
+        {id: 4, value:10, option:'D', text:'+10 years'},
+        {id: 5, value:100, option:'E', text:'Any Date'}
+      ]
+    },
+
     categories: {
       id: 'categories',
       data:[

@@ -5,6 +5,7 @@
   align-items: center;
   flex-direction: column;  
   .step-one{
+    // border: 1px solid red;
     font-family: 'Raleway', sans-serif;
     min-height: 500px;
     margin-top: 5rem;
@@ -25,18 +26,22 @@
       }
 
     }
-    .options-container{
-      width: 80%;
+    .container-options{
+      width: 60%;
       margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
       .option{
         display: flex;
         align-items: center;
         gap: 1.5rem;
         border: 1px solid #565e66;
         border-radius: .2rem;
-        width: 60%;
+        
         padding: .5rem;
         background-color:#eeeeee;
+        cursor: pointer;
         &:hover{
           background-color:#cecece;
         }
@@ -45,10 +50,12 @@
           border: 1px solid #565e66;
           font-size: 12px;
           font-weight: 300;
+          margin: 0;
         }
         .text-option{
           font-size: 16px;
           font-weight: 300;
+          cursor: pointer;
         }
       }
     }

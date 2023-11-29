@@ -78,6 +78,18 @@
         }
       }
     }
+    .next-step{
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      width: max-content;
+      padding: .5rem;
+      margin-top: 1rem;
+      font-weight: 500;
+      opacity: -1;
+      animation: flashing linear .5s .5 forwards;
+      cursor: pointer;
+    }
   }
 }
 

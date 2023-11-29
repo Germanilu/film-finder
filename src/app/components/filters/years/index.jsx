@@ -9,7 +9,9 @@ import './index.scss';
 const Years = () => {
 
     const dispatch = useDispatch();
-   const [selected,setSelected] = useState()
+   const [selected,setSelected] = useState();
+   const [continueButton,setContinueButton] = useState(false);
+   const [date,setDate] = useState('');
 
   
     /**
@@ -27,16 +29,14 @@ const Years = () => {
 
     /**
      * @method
-     * Dispatch updateData Action with year selected
+     * Set correct data for each state
      * 
      * @param {HTMLElement} e 
      */  
     const nextStep = (e) => {
       setSelected(e.currentTarget.id)
-      const year = calculateYear(e);
-      // setTimeout(() => {
-      //   dispatch(updateYear(year))
-      // }, 3000);
+      setContinueButton(true)
+      setDate(calculateYear(e))
     }
       
     const dataYears = get(externalData,'years.data');
@@ -62,6 +62,10 @@ const Years = () => {
               )
             }
             </div>
+            {
+              continueButton && 
+              <div className='next-step' onClick={() => dispatch(updateYear(date))}>Step 2<IoIosArrowRoundForward/></div>
+            }
           </div>
         </div>
     )

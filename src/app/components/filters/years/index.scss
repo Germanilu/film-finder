@@ -44,12 +44,6 @@
           border: 2px solid #5c5c5c;
           position: relative;
           animation: flashing linear .1s 4 forwards;
-          &::after{
-            content: 'V';
-            position: absolute;
-            right: 15px;
-          }
-
           .box-square{
             padding: .4rem;
             border: 2px solid #565e66;
@@ -57,6 +51,10 @@
             font-size: 12px;
             font-weight: 600;
             margin: 0;
+          }
+          .tick{
+            position: absolute;
+            right: 10px;
           }
         }
         &:hover{

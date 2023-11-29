@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <div className='home'>
-      <h1>CineWizard: Craft Your Perfect Movie Night</h1>
+      {/* <h1>CineWizard: Craft Your Perfect Movie Night</h1> */}
 
       {
         get(FilterDataState,'step') == 0 &&

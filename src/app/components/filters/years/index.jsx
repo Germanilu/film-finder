@@ -3,6 +3,7 @@ import {  useDispatch }     from 'react-redux';
 import {updateYear}                     from '@/app/redux/action'
 import externalData                         from '@/app/data';
 import { get,map} from 'lodash';
+import { FaCheck } from "react-icons/fa6";
 import './index.scss';
 const Years = () => {
 
@@ -32,14 +33,13 @@ const Years = () => {
     const nextStep = (e) => {
       setSelected(e.currentTarget.id)
       const year = calculateYear(e);
-      setTimeout(() => {
-        dispatch(updateYear(year))
-      }, 3000);
+      // setTimeout(() => {
+      //   dispatch(updateYear(year))
+      // }, 3000);
     }
       
     const dataYears = get(externalData,'years.data');
 
-    console.log(dataYears)
     return (
         <div className='years-design'>
           <div className='step-one'>
@@ -56,6 +56,7 @@ const Years = () => {
                 <div id={get(data,'id')} data-custom-value={get(data,'value')} className={`${selected == get(data,'id') ? "selected":"" } option`} onClick={(e) => nextStep(e)}>
                   <p className="box-square">{get(data,'option')}</p>
                   <span className='text-option'>{get(data,'text')}</span>
+                  <span className='tick'>{selected == get(data,'id')? <FaCheck/> : ""}</span>
                 </div>
               )
             }

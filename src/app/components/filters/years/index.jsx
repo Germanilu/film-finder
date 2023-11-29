@@ -7,10 +7,9 @@ import './index.scss';
 const Years = () => {
 
     const dispatch = useDispatch();
+   const [selected,setSelected] = useState()
 
-
-   
-
+  
     /**
      * @method
      * Calculate correct year ( actualYear - year)
@@ -31,8 +30,11 @@ const Years = () => {
      * @param {HTMLElement} e 
      */  
     const nextStep = (e) => {
+      setSelected(e.currentTarget.id)
       const year = calculateYear(e);
-      dispatch(updateYear(year))
+      setTimeout(() => {
+        dispatch(updateYear(year))
+      }, 3000);
     }
       
     const dataYears = get(externalData,'years.data');
@@ -51,7 +53,7 @@ const Years = () => {
             <div className='container-options'>
             {
               map(dataYears,data => 
-                <div id={get(data,'id')} data-custom-value={get(data,'value')} className='option' onClick={(e) => nextStep(e)}>
+                <div id={get(data,'id')} data-custom-value={get(data,'value')} className={`${selected == get(data,'id') ? "selected":"" } option`} onClick={(e) => nextStep(e)}>
                   <p className="box-square">{get(data,'option')}</p>
                   <span className='text-option'>{get(data,'text')}</span>
                 </div>

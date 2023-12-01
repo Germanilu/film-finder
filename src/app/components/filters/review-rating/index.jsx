@@ -1,8 +1,8 @@
 import {  useEffect, useState } from 'react';
 import {  useDispatch }     from 'react-redux';
-import {updateReviewRating}                     from '@/app/redux/action'
+import {updateReviewRating, previouseStep}                     from '@/app/redux/action'
 import { Rating } from 'react-simple-star-rating'
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import './index.scss';
 
 
@@ -44,10 +44,13 @@ const ReviewRating = () => {
                 onClick={handleRating}
                 />
             </div>
+            <div className='step-container'>
+            <div className='previouse-step' onClick={() => dispatch(previouseStep())}><IoIosArrowRoundBack/>Step 1</div>
             {
               continueButton && 
               <div className='next-step' onClick={() => dispatch(updateReviewRating(ratingValue))}>Step 3<IoIosArrowRoundForward/></div>
             }
+            </div>
           </div>
         </div>
     )

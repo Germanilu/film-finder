@@ -1,4 +1,5 @@
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
+import { connect, useSelector } from 'react-redux';
 import {  useDispatch }     from 'react-redux';
 import {updateYear}                     from '@/app/redux/action'
 import externalData                         from '@/app/data';
@@ -8,11 +9,12 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import './index.scss';
 const Years = () => {
 
-    const dispatch = useDispatch();
-   const [selected,setSelected] = useState();
+   const dispatch = useDispatch();
+   const [selected,setSelected] = useState("");
    const [continueButton,setContinueButton] = useState(false);
    const [date,setDate] = useState('');
 
+   const yearState = 2023- useSelector((state) =>  state.FilterData.year);
   
     /**
      * @method
@@ -20,23 +22,35 @@ const Years = () => {
      * 
      * @returns {Sting} Selected Year
      */
-    const calculateYear = (e) => {
-        const selectedValue = e.currentTarget.getAttribute('data-custom-value')
+    const calculateYear = (year) => {
         const actualYear    = 2023;
-        return actualYear - parseInt(selectedValue)
+        return actualYear - parseInt(year)
       }
     
+      useEffect(() => {
+        console.log("Selected:", selected)
+        
+        console.log(yearState)
+        if(yearState){
+          setSelected(yearState)
+          setContinueButton(true)
+
+        }
+        
+        console.log("now Selected:", selected)
+      })
 
     /**
      * @method
      * Set correct data for each state
      * 
-     * @param {HTMLElement} e 
+     * @param {Object} year 
      */  
-    const nextStep = (e) => {
-      setSelected(e.currentTarget.id)
+    const nextStep = (year) => {
+      debugger
+      setSelected(year.id)
       setContinueButton(true)
-      setDate(calculateYear(e))
+      setDate(calculateYear(get(year,'value')))
     }
       
     const dataYears = get(externalData,'years.data');
@@ -53,11 +67,11 @@ const Years = () => {
             </div>
             <div className='container-options'>
             {
-              map(dataYears,data => 
-                <div id={get(data,'id')} data-custom-value={get(data,'value')} className={`${selected == get(data,'id') ? "selected":"" } option`} onClick={(e) => nextStep(e)}>
-                  <p className="box-square">{get(data,'option')}</p>
-                  <span className='text-option'>{get(data,'text')}</span>
-                  <span className='tick'>{selected == get(data,'id')? <FaCheck/> : ""}</span>
+              map(dataYears,year => 
+                <div id={get(year,'id')} className={`${selected == get(year,'id') ? "selected":"" } option`} onClick={() => nextStep(year)}>
+                  <p className="box-square">{get(year,'option')}</p>
+                  <span className='text-option'>{get(year,'text')}</span>
+                  <span className='tick'>{selected == get(year,'id')? <FaCheck/> : ""}</span>
                 </div>
               )
             }

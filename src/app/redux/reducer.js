@@ -47,6 +47,15 @@ const initialState = {
               actors: action.actors,
             }
           };
+          
+        case 'PREVIOUSE_STEP':
+          return {
+            ...state,
+            FilterData:{
+              ...state.FilterData,
+              step: state.FilterData.step -1,
+            }
+          };
       default:
         return state;
     }

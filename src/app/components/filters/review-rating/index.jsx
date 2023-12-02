@@ -1,27 +1,28 @@
-import {  useEffect, useState } from 'react';
-import {  useDispatch }     from 'react-redux';
-import {updateReviewRating, previouseStep}                     from '@/app/redux/action'
-import { Rating } from 'react-simple-star-rating'
-import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+
+import {  useDispatch, useSelector }                    from 'react-redux';
+import {updateReviewRating, previouseStep,nextStep}     from '@/app/redux/action'
+import { get}                                           from 'lodash';
+import { Rating }                                       from 'react-simple-star-rating'
+import { IoIosArrowRoundForward, IoIosArrowRoundBack }  from "react-icons/io";
+
 import './index.scss';
 
 
 const ReviewRating = () => {
 
    const dispatch = useDispatch();
-   const [ratingValue, setRatingValue] = useState(0);
-   const [continueButton,setContinueButton] = useState(false);
 
+   const selectedRating =  useSelector((state) =>  get(state,'FilterData.reviewRating',null));
 
    /**
     * @method
-    * Set the ratingValue state and allow to next step
+    * Set the ratingValue and dispatch redux action
     * 
     * @param {int} rate Rate selected from Rating component
     */
    const handleRating = (rate) => {
-    setRatingValue(rate * 2);
-    setContinueButton(true)
+    const ratingValue = rate *2
+    dispatch(updateReviewRating(ratingValue))
   }
   
 
@@ -47,8 +48,8 @@ const ReviewRating = () => {
             <div className='step-container'>
             <div className='previouse-step' onClick={() => dispatch(previouseStep())}><IoIosArrowRoundBack/>Step 1</div>
             {
-              continueButton && 
-              <div className='next-step' onClick={() => dispatch(updateReviewRating(ratingValue))}>Step 3<IoIosArrowRoundForward/></div>
+              selectedRating && 
+              <div className='next-step' onClick={() => dispatch(nextStep())}>Step 3<IoIosArrowRoundForward/></div>
             }
             </div>
           </div>

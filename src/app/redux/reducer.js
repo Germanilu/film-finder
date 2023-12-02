@@ -25,7 +25,6 @@ const initialState = {
             ...state,
             FilterData:{
               ...state.FilterData,
-              step: state.FilterData.step +1,
               reviewRating: action.reviewRating,
             }
           };

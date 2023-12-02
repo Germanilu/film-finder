@@ -4,6 +4,19 @@ import {updateReviewRating, previouseStep,nextStep}     from '@/app/redux/action
 import { get}                                           from 'lodash';
 import { Rating }                                       from 'react-simple-star-rating'
 import { IoIosArrowRoundForward, IoIosArrowRoundBack }  from "react-icons/io";
+import { 
+  PiNumberSquareZeroFill , 
+  PiNumberSquareOneFill , 
+  PiNumberSquareTwoFill ,
+  PiNumberSquareThreeFill ,
+  PiNumberSquareFourFill ,
+  PiNumberSquareFiveFill , 
+  PiNumberSquareSixFill , 
+  PiNumberSquareSevenFill , 
+  PiNumberSquareEightFill , 
+  PiNumberSquareNineFill , 
+
+}  from "react-icons/pi";
 
 import './index.scss';
 
@@ -21,9 +34,22 @@ const ReviewRating = () => {
     * @param {int} rate Rate selected from Rating component
     */
    const handleRating = (rate) => {
-    const ratingValue = rate *2
-    dispatch(updateReviewRating(ratingValue))
+    const correctRate = rate -1
+    dispatch(updateReviewRating(correctRate))
   }
+
+  const customIcons = [
+    {icon: <PiNumberSquareZeroFill  size={50}/> },
+    {icon: <PiNumberSquareOneFill size={50}/> },
+    {icon: <PiNumberSquareTwoFill size={50}/> },
+    {icon: <PiNumberSquareThreeFill size={50}/> },
+    {icon: <PiNumberSquareFourFill size={50}/> },
+    {icon: <PiNumberSquareFiveFill size={50}/> },
+    {icon: <PiNumberSquareSixFill size={50}/> },
+    {icon: <PiNumberSquareSevenFill size={50}/> },
+    {icon: <PiNumberSquareEightFill size={50}/> },
+    {icon: <PiNumberSquareNineFill size={50}/> },
+  ]
   
 
     return (
@@ -38,9 +64,9 @@ const ReviewRating = () => {
             </div>
             <div className='star-rating-container'>
                 <Rating
+                iconsCount={10}
                 transition
-                showTooltip
-                allowFraction
+                customIcons={customIcons}
                 fillColorArray={['#f17a45', '#f19745', '#f1a545', '#f1b345', '#f1d045']} 
                 onClick={handleRating}
                 />

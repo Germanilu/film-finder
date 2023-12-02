@@ -13,8 +13,10 @@ const initialState = {
           ...state,
           FilterData:{
             ...state.FilterData,
-            step: state.FilterData.step +1,
-            year: action.year,
+            year: {
+              id: action.year.id,
+              year: action.year.year
+            } 
           }
         };
 
@@ -47,6 +49,14 @@ const initialState = {
               actors: action.actors,
             }
           };
+        case 'NEXT_STEP':
+        return {
+          ...state,
+          FilterData:{
+            ...state.FilterData,
+            step: state.FilterData.step +1,
+          }
+        };
           
         case 'PREVIOUSE_STEP':
           return {

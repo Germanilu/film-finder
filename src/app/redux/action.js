@@ -19,6 +19,10 @@ export const updateActors = (actors) => ({
   actors,
 });
 
+export const nextStep = () => ({
+  type: 'NEXT_STEP',
+});
+
 export const previouseStep = () => ({
   type: 'PREVIOUSE_STEP',
 });

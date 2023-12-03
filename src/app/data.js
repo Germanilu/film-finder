@@ -13,6 +13,7 @@ const externalData = {
     categories: {
       id: 'categories',
       data:[
+        { name: 'Action', id: 28 },
         { name: 'Adventure', id: 12 },
         { name: 'Animation', id: 16 },
         { name: 'Comedy', id: 35 },

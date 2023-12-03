@@ -4,10 +4,14 @@ import { useSelector, useDispatch }         from 'react-redux';
 import {updateCategory}                     from '@/app/redux/action'
 import externalData                         from '@/app/data';
 import { get,includes,pull,map, lowerCase } from 'lodash';
+import { IoIosArrowRoundForward }       from "react-icons/io";
+import './index.scss';
 
 const Category = ({filterData,setFilterData}) => {
 
   const dispatch = useDispatch();
+
+  const dataCategories = get(externalData,'categories.data');
 
     /**
    * @method
@@ -39,19 +43,31 @@ const Category = ({filterData,setFilterData}) => {
   }
 
   return (
-      <div>
-        <label>Choose your Category interests:</label>
-      
-      {
-        map(get(externalData,'categories.data'), category => 
-          <li>
-              <input type="checkbox" id={lowerCase(get(category,'name'))} name={lowerCase(get(category,'name'))} value={get(category,'id')} onClick={(addCheckbox)}/>
-              <label for={lowerCase(get(category,'name'))}>{get(category,'name')}</label>
-          </li>  
-        )
-  }
-        <button type="button" onClick={handleUpdateCategory}>click</button>
+    <div className='category-design'>
+      <div className='step-one'>
+        <div className='description'>
+          <div className='step'>3.<IoIosArrowRoundForward /></div>
+          <div>
+            <h2 className='title'>Step 3: Define the Genre</h2>
+            <p className='subtitle'>Explore and Select the Perfect Movie Category</p>
+          </div>
+        </div>
+        <div className='container-options'>
+          {
+            map(dataCategories, category =>
+              <div id={get(category, 'id')} className={`option`} >
+                <p className="box-square">{get(category, 'option')}</p>
+                <span className='text-option'>{get(category, 'name')}</span>
+              </div>
+            )
+          }
+        </div>
+        {/* {
+          selectedcategory &&
+          <div className='next-step' onClick={() => dispatch(nextStep())}>Step 2<IoIosArrowRoundForward /></div>
+        } */}
       </div>
+    </div>
   )
 }
 

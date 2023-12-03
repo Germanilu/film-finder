@@ -84,4 +84,3 @@ const ReviewRating = () => {
 }
 
 export default ReviewRating;
-

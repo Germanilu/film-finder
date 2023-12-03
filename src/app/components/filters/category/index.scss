@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
+
+.category-design{
+  display: flex;
+  align-items: center;
+  flex-direction: column;  
+  .step-one{
+    font-family: 'Raleway', sans-serif;
+    min-height: 500px;
+    margin-top: 5rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .description{
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      .step{
+        display: flex;
+        align-items: center;
+      }
+      .title{
+          color: #565e66;
+          margin: 0;
+          font-weight: 500;
+      }
+      .subtitle{
+        color: #81868d;
+        margin: 0;
+        font-weight: 300;
+      }
+
+    }
+    .container-options{
+        display: flex;
+        width: 40%;
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-around;
+      .option{
+        width: 180px;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        border: 1px solid #565e66;
+        border-radius: .2rem;
+        padding: .5rem;
+        background-color:#eeeeee;
+        cursor: pointer;
+        &.selected{
+          border: 2px solid #5c5c5c;
+          position: relative;
+          animation: flashing linear .1s 4 forwards;
+          .box-square{
+            padding: .4rem;
+            border: 2px solid #565e66;
+            background-color: #9c9c9c;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0;
+          }
+          .tick{
+            position: absolute;
+            right: 10px;
+          }
+        }
+        &:hover{
+          background-color:#cecece;
+        }
+        .box-square{
+          padding: .4rem;
+          border: 1px solid #565e66;
+          font-size: 12px;
+          font-weight: 300;
+          margin: 0;
+        }
+        .text-option{
+          font-size: 16px;
+          font-weight: 300;
+          cursor: pointer;
+        }
+      }
+    }
+    .next-step{
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      width: max-content;
+      padding: .5rem;
+      margin-top: 1rem;
+      font-weight: 500;
+      opacity: -1;
+      animation: flashing linear .5s .5 forwards;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes flashing {
+  from{
+    opacity: 0%;
+  }
+  to{
+    opacity: 100%;
+  }
+}

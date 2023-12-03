@@ -1,7 +1,7 @@
 
 const initialState = {
   FilterData: {
-    step: 0,
+    step: 2,
   }
   };
  

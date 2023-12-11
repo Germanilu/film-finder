@@ -1,50 +1,32 @@
 
 
-import { useSelector, useDispatch }         from 'react-redux';
-import {updateCategory}                     from '@/app/redux/action'
-import externalData                         from '@/app/data';
-import { get,includes,pull,map, lowerCase } from 'lodash';
-import { IoIosArrowRoundForward }       from "react-icons/io";
+import { useSelector, useDispatch }                     from 'react-redux';
+import {updateCategory, nextStep, previousStep}                       from '@/app/redux/action'
+import externalData                                     from '@/app/data';
+import { get,includes,map,isEmpty }                     from 'lodash';
+import { FaCheck }                                      from "react-icons/fa6";
+import { IoIosArrowRoundForward, IoIosArrowRoundBack }  from "react-icons/io";
 import './index.scss';
 
-const Category = ({filterData,setFilterData}) => {
+const Category = () => {
 
   const dispatch = useDispatch();
-
   const dataCategories = get(externalData,'categories.data');
+  const selectedcategory =  useSelector((state) =>  get(state,'FilterData.category',null));
 
     /**
    * @method
    * Dispatch updateData Action
    * @param {Int} year 
    */
-    const handleUpdateCategory = () => {
-      const {category}        = filterData;
-      dispatch(updateCategory(category));
+    const handleUpdateCategory = (category) => {
+      dispatch(updateCategory(get(category,'id')));
     };
     
-  /**
-   * @method
-   * Check in filterData state, if include id in category Array will removed, otherwise will add to it.
-   * @param {event} event 
-   */
-  const addCheckbox = (event) => {
-    const {category} = filterData;
-    if(includes(category,event.target.defaultValue)){
-      pull(category,event.target.defaultValue)
-    }
-    else if(!includes(category,event.target.defaultValue)){
-        const categoryArray = category.concat(event.target.defaultValue)
-        setFilterData({
-            ...filterData,
-            category:categoryArray
-        })
-    }
-  }
 
   return (
     <div className='category-design'>
-      <div className='step-one'>
+      <div className='step-three'>
         <div className='description'>
           <div className='step'>3.<IoIosArrowRoundForward /></div>
           <div>
@@ -55,17 +37,20 @@ const Category = ({filterData,setFilterData}) => {
         <div className='container-options'>
           {
             map(dataCategories, category =>
-              <div id={get(category, 'id')} className={`option`} >
-                <p className="box-square">{get(category, 'option')}</p>
+              <div id={get(category, 'id')} className={`${includes(selectedcategory,category.id) ? 'selected': ""} option`} onClick={() => handleUpdateCategory(category)} >
                 <span className='text-option'>{get(category, 'name')}</span>
+                <span className='tick'>{includes(selectedcategory,category.id)? <FaCheck/> : ""}</span>
               </div>
             )
           }
         </div>
-        {/* {
-          selectedcategory &&
-          <div className='next-step' onClick={() => dispatch(nextStep())}>Step 2<IoIosArrowRoundForward /></div>
-        } */}
+        <div className='step-container'>
+            <div className='previous-step' onClick={() => dispatch(previousStep())}><IoIosArrowRoundBack/>Step 2</div>
+            {
+              !isEmpty(selectedcategory) && 
+              <div className='next-step' onClick={() => dispatch(nextStep())}>Step 4<IoIosArrowRoundForward/></div>
+            }
+            </div>
       </div>
     </div>
   )

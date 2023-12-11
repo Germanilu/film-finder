@@ -1,6 +1,6 @@
 
 import {  useDispatch, useSelector }                    from 'react-redux';
-import {updateReviewRating, previouseStep,nextStep}     from '@/app/redux/action'
+import {updateReviewRating, previousStep,nextStep}     from '@/app/redux/action'
 import { get}                                           from 'lodash';
 import { Rating }                                       from 'react-simple-star-rating'
 import { IoIosArrowRoundForward, IoIosArrowRoundBack }  from "react-icons/io";
@@ -72,7 +72,7 @@ const ReviewRating = () => {
                 />
             </div>
             <div className='step-container'>
-            <div className='previouse-step' onClick={() => dispatch(previouseStep())}><IoIosArrowRoundBack/>Step 1</div>
+            <div className='previous-step' onClick={() => dispatch(previousStep())}><IoIosArrowRoundBack/>Step 1</div>
             {
               selectedRating && 
               <div className='next-step' onClick={() => dispatch(nextStep())}>Step 3<IoIosArrowRoundForward/></div>

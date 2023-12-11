@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;  
-  .step-one{
+  .step-three{
     font-family: 'Raleway', sans-serif;
     min-height: 500px;
     margin-top: 5rem;
@@ -31,7 +31,6 @@
         margin: 0;
         font-weight: 300;
       }
-
     }
     .container-options{
         display: flex;
@@ -50,19 +49,12 @@
         border-radius: .2rem;
         padding: .5rem;
         background-color:#eeeeee;
+        justify-content: center;
         cursor: pointer;
         &.selected{
           border: 2px solid #5c5c5c;
           position: relative;
           animation: flashing linear .1s 4 forwards;
-          .box-square{
-            padding: .4rem;
-            border: 2px solid #565e66;
-            background-color: #9c9c9c;
-            font-size: 12px;
-            font-weight: 600;
-            margin: 0;
-          }
           .tick{
             position: absolute;
             right: 10px;
@@ -83,19 +75,28 @@
           font-weight: 300;
           cursor: pointer;
         }
+        &.include{
+          border: 1px solid red;
+        }
       }
     }
-    .next-step{
+    .step-container{
+      width: 40%;
+      margin: 0 auto;
       display: flex;
-      align-items: center;
-      gap: .5rem;
-      width: max-content;
-      padding: .5rem;
+      justify-content: space-between;
       margin-top: 1rem;
-      font-weight: 500;
-      opacity: -1;
-      animation: flashing linear .5s .5 forwards;
-      cursor: pointer;
+      .next-step, .previous-step{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        width: max-content;
+        padding: .5rem;
+        font-weight: 500;
+        opacity: -1;
+        animation: flashing linear .5s .5 forwards;
+        cursor: pointer;
+      }
     }
   }
 }

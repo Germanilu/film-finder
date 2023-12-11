@@ -1,7 +1,10 @@
+import { includes}                       from 'lodash';
+
 
 const initialState = {
   FilterData: {
-    step: 2,
+    step: 0,
+    category:[]
   }
   };
  
@@ -30,12 +33,20 @@ const initialState = {
           };
 
         case 'UPDATE_FILTER_DATA_CATEGORY':
+          if(includes(state.FilterData.category,action.id)){
+            return {
+              ...state,
+              FilterData:{
+                ...state.FilterData,
+                category:  state.FilterData.category.filter((id) => id !== action.id)
+              }
+            }
+          }
           return {
             ...state,
             FilterData:{
               ...state.FilterData,
-              step: state.FilterData.step +1,
-              category: action.category,
+              category: [...state.FilterData.category, action.id]
             }
           };
 
@@ -57,7 +68,7 @@ const initialState = {
           }
         };
           
-        case 'PREVIOUSE_STEP':
+        case 'PREVIOUS_STEP':
           return {
             ...state,
             FilterData:{

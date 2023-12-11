@@ -9,9 +9,9 @@ export const updateReviewRating = (reviewRating) => ({
   reviewRating,
 });
 
-export const updateCategory = (category) => ({
+export const updateCategory = (id) => ({
   type: 'UPDATE_FILTER_DATA_CATEGORY',
-  category,
+  id,
 });
 
 export const updateActors = (actors) => ({
@@ -23,6 +23,6 @@ export const nextStep = () => ({
   type: 'NEXT_STEP',
 });
 
-export const previouseStep = () => ({
-  type: 'PREVIOUSE_STEP',
+export const previousStep = () => ({
+  type: 'PREVIOUS_STEP',
 });

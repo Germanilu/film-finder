@@ -70,6 +70,7 @@ const externalData = {
         {name: 'Joaquin Phoenix', id: 73421}, 
         {name: 'Brad Pitt', id: 287}, 
         {name: 'Tom Cruise', id: 500}, 
+        {name: 'Keanu Reeves', id: 6384}, 
       ]
     },
 }

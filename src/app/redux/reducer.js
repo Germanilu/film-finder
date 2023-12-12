@@ -4,7 +4,8 @@ import { includes}                       from 'lodash';
 const initialState = {
   FilterData: {
     step: 0,
-    category:[]
+    category:[],
+    actors:[]
   }
   };
  
@@ -51,12 +52,20 @@ const initialState = {
           };
 
         case 'UPDATE_FILTER_DATA_ACTORS':
+          if(includes(state.FilterData.actors,action.id)){
+            return {
+              ...state,
+              FilterData:{
+                ...state.FilterData,
+                actors:  state.FilterData.actors.filter((id) => id !== action.id)
+              }
+            }
+          }
           return {
             ...state,
             FilterData:{
               ...state.FilterData,
-              step: state.FilterData.step +1,
-              actors: action.actors,
+              actors: [...state.FilterData.actors, action.id]
             }
           };
         case 'NEXT_STEP':

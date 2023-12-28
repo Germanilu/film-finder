@@ -51,7 +51,7 @@ const Actors = () => {
           <div className='previous-step' onClick={() => dispatch(previousStep())}><IoIosArrowRoundBack/>Step 3</div>
           {
             !isEmpty(selectedactors) && 
-            <div className='next-step' onClick={() => dispatch(nextStep())}>Step 4<IoIosArrowRoundForward/></div>
+            <div className='next-step' onClick={() => dispatch(nextStep())}>Next<IoIosArrowRoundForward/></div>
           }
           </div>
     </div>

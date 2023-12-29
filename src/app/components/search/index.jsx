@@ -5,8 +5,11 @@ import { IoIosArrowRoundForward, IoIosArrowRoundBack }  from "react-icons/io";
 import { previousStep}                                  from '@/app/redux/action';
 import axios                                            from 'axios';
 import Card from '@/app/components/card/index';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import './index.scss';
-
+import { Pagination } from 'swiper/modules';
 const Search = () => {
 
   const dispatch = useDispatch();
@@ -125,18 +128,30 @@ const Search = () => {
                   errorMsg && 
                   <p className="error-message">{errorMsg}</p>
                 }
+                  <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        centeredSlides={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+ 
                 {
                   movies &&
                   <>
                     {
                       map(movies,movie => {
                         return (
-                          <Card movie={movie}/>
-                        )
-                      })
-                    }
+                          <SwiperSlide><Card movie={movie}/></SwiperSlide>
+                          )
+                        })
+                      }
                   </>
                   }
+                  </Swiper>
               </div>
         </div>
     )

@@ -4,6 +4,7 @@ import { get,map, isEmpty }             from 'lodash';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack }  from "react-icons/io";
 import { previousStep}                                  from '@/app/redux/action';
 import axios                                            from 'axios';
+import Card from '@/app/components/card/index';
 import './index.scss';
 
 const Search = () => {
@@ -77,13 +78,11 @@ const Search = () => {
         };
 
         const result = await axios.get(url,options)
-        debugger
         if(isEmpty(result.data.results)){
           setErrorMsg("We're sorry, but we couldn't find any movies");
         }
         if(result.status === 200 && !isEmpty(result.data.results)){
           setMovies(result.data.results)
-          debugger
         }
         } catch (error) {
           console.log(error);
@@ -131,12 +130,8 @@ const Search = () => {
                   <>
                     {
                       map(movies,movie => {
-                        debugger
                         return (
-                          <div className='movie-box'>
-                            <p className='movie-title'>{movie.title}</p>
-                            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" />
-                          </div>
+                          <Card movie={movie}/>
                         )
                       })
                     }

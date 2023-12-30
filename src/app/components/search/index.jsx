@@ -2,6 +2,7 @@ import { useSelector, useDispatch }                     from 'react-redux';
 import React, { useState }                              from 'react';
 import { get,map, isEmpty, find }             from 'lodash';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack }  from "react-icons/io";
+import {GoStarFill  }  from "react-icons/go";
 import { previousStep}                                  from '@/app/redux/action';
 import axios                                            from 'axios';
 import Card from '@/app/components/card/index';
@@ -123,11 +124,11 @@ const Search = () => {
               <div className="selected-filters-box">
                   <div className="box">
                     <span>Year</span>
-                    <span className='data'>{selectedYear} +</span>
+                    <span className='data'>{selectedYear == 1923 ? "Any Date":`${selectedYear} +` }</span>
                   </div>
                   <div className="box">
                     <span>Avg. Rating</span>
-                    <span className='data'>{selectedRating}</span>
+                    <span className='data'>{selectedRating} + <GoStarFill color='#FFD700'/></span>
                   </div>
                   <div className="box">
                     <span>Category</span>

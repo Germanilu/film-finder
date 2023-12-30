@@ -4,16 +4,26 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    .title{
+        font-size: 1.4rem;
+        font-weight: medium;
+    }
     .selected-filters-box{
-        width: 40%;
+        width: 80%;
         display: flex;
+        border-bottom: 2px solid #565e66;
+        border-top: 2px solid #565e66;
         .box{
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            width: 100%;
-            border: 1px solid #565e66;
+            gap: 1rem;
+            padding: 1rem 0rem;
+            .data{
+                font-size: .8rem;
+            }
         }
     }
     .buttons{
@@ -33,20 +43,7 @@
     }
 
     .result-container{
-        height: 500px;
-        width: 90%;
-        padding: 2rem 0rem;
-        .swiper {
-            width: 100%;
-            height: 100%;
-          }
-          .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          } 
+        width: 100%;
+        padding: 2rem 0rem; 
     }
 }

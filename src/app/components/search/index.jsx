@@ -1,6 +1,6 @@
 import { useSelector, useDispatch }                     from 'react-redux';
 import React, { useState }                              from 'react';
-import { get,map, isEmpty }             from 'lodash';
+import { get,map, isEmpty, find }             from 'lodash';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack }  from "react-icons/io";
 import { previousStep}                                  from '@/app/redux/action';
 import axios                                            from 'axios';
@@ -9,11 +9,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './index.scss';
+import externalData                                     from '@/app/data';
 import { Pagination } from 'swiper/modules';
 const Search = () => {
 
   const dispatch = useDispatch();
-
 
   const selectedYear =  useSelector((state) =>  get(state,'FilterData.year.year',null));
   const selectedRating =  useSelector((state) =>  get(state,'FilterData.reviewRating',null));
@@ -90,31 +90,52 @@ const Search = () => {
         } catch (error) {
           console.log(error);
           setErrorMsg("We're sorry, but we couldn't find any movies");
-        }
+        }   
+    }
 
-  
-   
+
+    /**
+     * Convert the actor id into string with actual names
+     * @param {Array} id Array of ids  
+     * @returns {String} String with actors names
+     */
+    const getActor = (id) => {
+      let actorName = "| ";
+      map(id,id => {
+        const actorObject = find(externalData.actors.data, {'id': id})
+        actorName += `${actorObject.name} | `
+      })
+      return actorName
+    }
+
+    const getCategory = (id) => {
+      let category = "| ";
+      map(id,id => {
+        const categoryObject = find(externalData.categories.data, {'id': id})
+        category += `${categoryObject.name} | `
+      })
+      return category
     }
 
     return(
         <div className='search-container'>
-            <p>These are the filters you have selected</p>
+            <p className='title'>These are the filters you have selected</p>
               <div className="selected-filters-box">
                   <div className="box">
-                    <p>Year</p>
-                    <p>{selectedYear} +</p>
+                    <span>Year</span>
+                    <span className='data'>{selectedYear} +</span>
                   </div>
                   <div className="box">
-                    <p>Avg. Rating</p>
-                    <p>{selectedRating}</p>
+                    <span>Avg. Rating</span>
+                    <span className='data'>{selectedRating}</span>
                   </div>
                   <div className="box">
-                    <p>Category</p>
-                    <p>{selectedcategory}</p>
+                    <span>Category</span>
+                    <span className='data'>{getCategory(selectedcategory)}</span>
                   </div>
                   <div className="box">
-                    <p>Actors</p>
-                    <p>{selectedactors}</p>
+                    <span>Actors</span>
+                    <span className='data'>{getActor(selectedactors)}</span>
                   </div>
 
               </div>
@@ -129,15 +150,15 @@ const Search = () => {
                   <p className="error-message">{errorMsg}</p>
                 }
                   <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        centeredSlides={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
+                    slidesPerView={4}
+                    spaceBetween={30}
+                    centeredSlides={true}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    modules={[Pagination]}
+                    className="mySwiper"
+                  >
  
                 {
                   movies &&

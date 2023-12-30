@@ -1,36 +1,40 @@
 .movie-container{
-    width: 100%;
-    height: 90%;
-    border: 2px solid #5c5c5c;
-    display: flex;
-    flex-direction: column;
-    background-color: #eeeeee;
-    border-radius: 5%;
+    background-color: #020202;
+    color: #ffffff;
+    height: 800px;
+    padding-bottom: 1rem;
     .img-box{
         margin: 0 auto;
-        margin-top: 5%;
-        width: 70%;
-        height: 70%;
-        border-radius: 5%;
+        width: 100%;
+        height: 80%;
         overflow: hidden;
         .image{
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: fill;
         }
     }
-    .title-vote-box{
-        margin: 0 auto;
+ 
+    .title{
+        font-size: bold;
+        font-size: 1.3rem;
+        text-decoration: underline;
         margin-top: 1rem;
+        padding: 0rem 1rem;
+        text-align: left;
+    }
+    .information-box{
+        padding: 0rem 1rem;
         display: flex;
-        width: 80%;
         align-items: center;
-        justify-content: space-between;
-        .title{
-            color: #5c5c5c;
-            font-size: bold;
-            font-size: 1.5rem;
-            text-decoration: underline;
-        }
+        font-size: .9rem;
+        gap: 1rem;
+        margin-top: .5rem;
+    }
+    .overview{
+        padding: 0rem 1rem;
+        font-size: .7rem;
+        margin-top: .5rem;
+        text-align: left;
     }
 }

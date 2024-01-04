@@ -3,7 +3,6 @@ import './index.scss';
 
 const Card = (movie) => {
 
-  console.log(movie)
   return(
     <div className="movie-container">
       <div className="img-box">

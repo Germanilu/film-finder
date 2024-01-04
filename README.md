@@ -1,3 +1,46 @@
+# Toc
+
+- [Toc](#toc)
+- [Introduction](Introduction)
+- [The Application](#the-application)
+- [Some Images](#some-images)
+    - [Login](#login)
+    - [Home](#home)
+    - [User Consult](#user-consult)
+    - [Vet Calendar](#vet-calendar)
+  - [Author](#author)
+      - [Luciano Germani :it:](#luciano-germani-it)
+
+## Introduction
+
+Film Finder is a web application that allows users to discover movies by selecting various criteria such as year, rating, category, and actors. The app utilizes the TMDb API to fetch and display movie information based on user preferences.
+
+## Features
+
+- Four-step process for selecting movie criteria: year, rating, category, and actors.
+- Dynamic UI updates based on user selections.
+- Seamless integration with The Movie Database API for retrieving movie data.
+- Redux for state management to ensure a consistent and efficient user experience.
+
+
+
+## Author 	
+
+#### [Luciano Germani](https://github.com/Germanilu) :it:
+
+---------------------
+
+[:top:](#toc)
+
+
+
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

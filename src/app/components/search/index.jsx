@@ -71,7 +71,6 @@ const Search = () => {
         //building url
         url = `${url}${movieYearKey}=${get(processedData,'primaryReleaseDate')}&${voteAverageKey}=${get(processedData,'voteAverage')}&${choosenCategoryKey}=${get(processedData,'categories')}&${actorsKey}=${get(processedData,'actors')}`;
 
-        console.log(url)
         //options for get
         const options = {
           method: 'GET',

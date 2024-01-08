@@ -11,6 +11,10 @@
 
 Film Finder is a web application that allows users to discover movies by selecting various criteria such as year, rating, category, and actors. The app utilizes the TMDb API to fetch and display movie information based on user preferences.
 
+
+This application is deployed in **Vercel,** you can see the website here: [Film Finder](https://film-finder-thmdb-livfy56ds-germanilu.vercel.app/).
+
+
 ## Features
 
 - Four-step process for selecting movie criteria: year, rating, category, and actors.
